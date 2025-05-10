@@ -23,7 +23,6 @@ fetch(`https://api.jikan.moe/v4/top/anime`)
                 `;
                 row.appendChild(col);
             }
-
             main_content.appendChild(row);
         }
     })
