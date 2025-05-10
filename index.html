@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    <a class="nav-link" href="./animes.html">Animes</a>
+                    <a class="nav-link" href="#">TBA</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="outer-container" class="d-flex flex-column align-items-center">
+        <div class="w-75">
+            <div id="bigCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="big-carousel-inner" class="carousel-inner">
+                    <!-- Carousel item example -->
+                    <!-- <div class="carousel-item active">
+                    <img src="https://img.youtube.com/vi/nz-VCl7yUAw/maxresdefault.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://img.youtube.com/vi/7d2ot3PQBMs/maxresdefault.jpg" class="d-block w-100" alt="...">
+                </div> -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#bigCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#bigCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="main-content">
+                <div class="content-section">
+                    <div class="my-5">
+                        <div class="row border-bottom my-4 align-items-end">
+                            <div class="col">
+                                <h1 class="text-white m-0">Seasonal Animes</h1>
+                            </div>
+                            <div class="col-auto">
+                                <a class="alert-link text-white">More</a>
+                            </div>
+                        </div>
+                        <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
+                            <div id="carousel-1-inner" class="carousel-inner">
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="my-5">
+                        <div class="row border-bottom my-4 align-items-end">
+                            <div class="col">
+                                <h1 class="text-white m-0">Top Animes</h1>
+                            </div>
+                            <div class="col-auto">
+                                <a class="alert-link text-white">More</a>
+                            </div>
+                        </div>
+                        <div id="carousel-2" class="carousel slide" data-bs-ride="carousel">
+                            <div id="carousel-2-inner" class="carousel-inner">
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel-2" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel-2" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-body-tertiary text-dark text-center py-3">
+        <div class="container">
+            <div>
+                <a href="https://www.facebook.com/" class="text-dark mx-2">Facebook</a>
+                <a href="https://twitter.com/" class="text-dark mx-2">Twitter</a>
+                <a href="https://www.instagram.com/" class="text-dark mx-2">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
