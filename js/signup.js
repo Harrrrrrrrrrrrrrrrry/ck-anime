@@ -55,12 +55,7 @@ google_btn.addEventListener("click", () => {
             const user = userCredential.user;
             console.log("Google login success:", user);
 
-            login_container.classList.add("d-none");
-            outer_container.innerHTML = `
-                <div>
-                    <h1>Email: ${user.email}</h1>
-                </div>
-            `;
+            window.location.href = "./index.html"
 
             alert("User logged in");
         })
