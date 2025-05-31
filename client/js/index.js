@@ -20,7 +20,7 @@ fetch(`https://api.jikan.moe/v4/seasons/now`)
         big_carousel_first_item.classList.add("active");
 
         // carousel 1
-        const itemsPerSlide = 4;
+        const itemsPerSlide = 6;
         for (let i = 0; i < data.data.length-1; i += itemsPerSlide) {
             const carousel_1_item = document.createElement("div");
             carousel_1_item.classList.add("carousel-item");
@@ -31,15 +31,17 @@ fetch(`https://api.jikan.moe/v4/seasons/now`)
             for (let j = i; j < i + itemsPerSlide && j < data.data.length; j++) {
                 const anime = data.data[j];
                 const col = document.createElement("div");
-                col.classList.add("col-md-3");
+                col.classList.add("col-md-2");
 
                 col.innerHTML = `
-                    <div class="card">
-                        <img src="${anime.trailer?.images?.maximum_image_url || ''}" class="card-img-top" alt="Anime Image">
-                        <div class="card-body">
-                            <h5 class="card-title text-truncate">${anime.titles[0]?.title || 'Untitled'}</h5>
+                    <a href="details.html?id=${anime.mal_id}" class="text-decoration-none">
+                        <div class="card h-100 bg-dark">
+                            <img src="${anime.images.jpg.large_image_url}" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h5 class="card-title text-truncate text-white">${anime.titles[0]?.title}</h5>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 `;
                 row.appendChild(col);
             }
@@ -57,7 +59,7 @@ fetch(`https://api.jikan.moe/v4/top/anime`)
     .then((res) => res.json())
     .then((data) => {
         // carousel 2
-        const itemsPerSlide = 4;
+        const itemsPerSlide = 6;
         for (let i = 0; i < data.data.length-1; i += itemsPerSlide) {
             const carousel_2_item = document.createElement("div");
             carousel_2_item.classList.add("carousel-item");
@@ -68,15 +70,17 @@ fetch(`https://api.jikan.moe/v4/top/anime`)
             for (let j = i; j < i + itemsPerSlide && j < data.data.length; j++) {
                 const anime = data.data[j];
                 const col = document.createElement("div");
-                col.classList.add("col-md-3");
+                col.classList.add("col-md-2");
 
                 col.innerHTML = `
-                    <div class="card">
-                        <img src="${anime.trailer?.images?.maximum_image_url || ''}" class="card-img-top" alt="Anime Image">
-                        <div class="card-body">
-                            <h5 class="card-title text-truncate">${anime.titles[0]?.title || 'Untitled'}</h5>
+                    <a href="details.html?id=${anime.mal_id}" class="text-decoration-none">
+                        <div class="card h-100 bg-dark">
+                            <img src="${anime.images.jpg.large_image_url}" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h5 class="card-title text-truncate text-white">${anime.titles[0]?.title}</h5>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 `;
                 row.appendChild(col);
             }
@@ -89,3 +93,41 @@ fetch(`https://api.jikan.moe/v4/top/anime`)
     })
     .catch((error) => console.error(error))
 
+// top mangas
+fetch(`https://api.jikan.moe/v4/top/manga`)
+    .then((res) => res.json())
+    .then((data) => {
+        // carousel 3
+        const itemsPerSlide = 6;
+        for (let i = 0; i < data.data.length-1; i += itemsPerSlide) {
+            const carousel_3_item = document.createElement("div");
+            carousel_3_item.classList.add("carousel-item");
+
+            const row = document.createElement("div");
+            row.classList.add("row");
+
+            for (let j = i; j < i + itemsPerSlide && j < data.data.length; j++) {
+                const anime = data.data[j];
+                const col = document.createElement("div");
+                col.classList.add("col-md-2");
+
+                col.innerHTML = `
+                    <a href="details.html?id=${anime.mal_id}" class="text-decoration-none">
+                        <div class="card h-100 bg-dark">
+                            <img src="${anime.images.jpg.large_image_url}" class="card-img-top">
+                            <div class="card-body p-0">
+                                <h5 class="card-title text-truncate text-white">${anime.titles[0]?.title}</h5>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                row.appendChild(col);
+            }
+
+            carousel_3_item.appendChild(row);
+            carousel_3_inner.appendChild(carousel_3_item);
+        }
+        const carousel_3_first_item = carousel_3_inner.querySelector(".carousel-item");
+        carousel_3_first_item.classList.add("active");
+    })
+    .catch((error) => console.error(error))

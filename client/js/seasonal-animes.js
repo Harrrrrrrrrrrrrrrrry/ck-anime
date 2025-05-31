@@ -15,9 +15,9 @@ fetch(`https://api.jikan.moe/v4/seasons/now`)
 
                 col.innerHTML = `
                     <div class="card">
-                        <img src="${anime.images.jpg.large_image_url || ''}" class="card-img-top img-fluid" alt="Anime Image">
+                        <img src="${anime.images.jpg.large_image_url}" class="card-img-top img-fluid" alt="Anime Image">
                         <div class="card-body">
-                            <h5 class="card-title text-truncate">${anime.titles[0]?.title || 'Untitled'}</h5>
+                            <h5 class="card-title text-truncate">${anime.titles[0]?.title}</h5>
                         </div>
                     </div>
                 `;
