@@ -43,7 +43,10 @@ function addToWatchList() {
                         [`watchList.${animeId}`] : document.getElementById("anime-title").textContent
                     });
                 })
-                .then(() => console.log("user data updated", userRef))
+                .then(() => {
+                    console.log("user data updated", userRef);
+                    alert("Added to Watch List");
+                })
                 .catch((error) => console.error("update error:", error))
 
             // window.location.href = "./plan-to-watch.html";

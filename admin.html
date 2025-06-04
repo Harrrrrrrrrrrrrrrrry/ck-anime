@@ -23,7 +23,6 @@
 <body class="bg-dark min-vh-100 d-flex flex-column">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">HOME</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,24 +36,45 @@
     </nav>
 
     <div id="outer-container" class="d-flex flex-column align-items-center">
-        <div class="w-50">
-            <button class="btn btn-primary mt-5 mb-3" id="create-btn" onclick="showCreateForm()"><i
+        <div class="w-50 mt-5">
+            <h1 class="text-white">Product Management</h1>
+            <!-- CREATE -->
+            <button class="btn btn-primary my-3" id="create-btn" onclick="showCreateForm()"><i
                     class="fa-solid fa-plus"></i></button>
             <div class="vw-100 vh-100 position-fixed top-50 start-50 translate-middle d-none" id="createForm"
                 style="background-color: rgba(0, 0, 0, 0.8);">
                 <div class="w-50 p-5 m-5 mx-auto rounded bg-dark-subtle">
                     <form action="" class="d-flex flex-column">
-                        <input type="text" placeholder="Title" class="m-1 form-control" id="productTitle">
-                        <input class="m-1 form-control" type="text" id="productFile">
+                        <input type="text" placeholder="Title" class="m-1 form-control" id="createFormProductTitle">
+                        <input type="text" placeholder="Image URL" class="m-1 form-control" id="createFormProductFile">
                         <textarea placeholder="Sypnosis" class="m-1 form-control" rows="5"
-                            id="productSypnosis"></textarea>
-                        <input type="text" placeholder="Episodes" class="m-1 form-control" id="productEpisodes">
-                        <input type="text" placeholder="Score" class="m-1 form-control" id="productScore">
-                        <input type="text" placeholder="Genres" class="m-1 form-control" id="productGenres">
-                        <input type="text" placeholder="Themes" class="m-1 form-control" id="productThemes">
+                            id="createFormProductSypnosis"></textarea>
+                        <input type="text" placeholder="Episodes" class="m-1 form-control" id="createFormProductEpisodes">
+                        <input type="text" placeholder="Score" class="m-1 form-control" id="createFormProductScore">
+                        <input type="text" placeholder="Genres" class="m-1 form-control" id="createFormProductGenres">
+                        <input type="text" placeholder="Themes" class="m-1 form-control" id="createFormProductThemes">
 
                         <button type="submit" class="btn btn-success m-1" id="createBtn" onclick="">Create</button>
                         <button type="button" class="btn btn-danger m-1" onclick="closeCreateForm()">Close</button>
+                    </form>
+                </div>
+            </div>
+            <!-- EDIT -->
+            <div class="vw-100 vh-100 position-fixed top-50 start-50 translate-middle d-none" id="editForm"
+                style="background-color: rgba(0, 0, 0, 0.8);">
+                <div class="w-50 p-5 m-5 mx-auto rounded bg-dark-subtle">
+                    <form action="" class="d-flex flex-column">
+                        <input type="text" placeholder="Title" class="m-1 form-control" id="editFormProductTitle">
+                        <input type="text" placeholder="Image URL" class="m-1 form-control" id="editFormProductFile" >
+                        <textarea placeholder="Sypnosis" class="m-1 form-control" rows="5"
+                            id="editFormProductSypnosis"></textarea>
+                        <input type="text" placeholder="Episodes" class="m-1 form-control" id="editFormProductEpisodes">
+                        <input type="text" placeholder="Score" class="m-1 form-control" id="editFormProductScore">
+                        <input type="text" placeholder="Genres" class="m-1 form-control" id="editFormProductGenres">
+                        <input type="text" placeholder="Themes" class="m-1 form-control" id="editFormProductThemes">
+
+                        <button type="submit" class="btn btn-success m-1" id="confirmEditBtn" onclick="editProduct()">Edit</button>
+                        <button type="button" class="btn btn-danger m-1" onclick="closeEditForm()">Close</button>
                     </form>
                 </div>
             </div>

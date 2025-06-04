@@ -1,11 +1,13 @@
+// create form
 const createForm = document.getElementById("createForm");
-const productTitle = document.getElementById("productTitle");
-const productFile = document.getElementById("productFile");
-const productSypnosis = document.getElementById("productSypnosis");
-const productEpisodes = document.getElementById("productEpisodes");
-const productScore = document.getElementById("productScore");
-const productGenres = document.getElementById("productGenres");
-const productThemes = document.getElementById("productThemes");
+
+const createFormProductTitle = document.getElementById("createFormProductTitle");
+const createFormProductFile = document.getElementById("createFormProductFile");
+const createFormProductSypnosis = document.getElementById("createFormProductSypnosis");
+const createFormProductEpisodes = document.getElementById("createFormProductEpisodes");
+const createFormProductScore = document.getElementById("createFormProductScore");
+const createFormProductGenres = document.getElementById("createFormProductGenres");
+const createFormProductThemes = document.getElementById("createFormProductThemes");
 
 function showCreateForm() {
     createForm.classList.remove("d-none");
@@ -13,28 +15,55 @@ function showCreateForm() {
 
 function closeCreateForm() {
     createForm.classList.add("d-none");
-    productTitle.value = "";
-    productFile.value = "";
-    productSypnosis.value = "";
-    productEpisodes.value = "";
-    productScore.value = "";
-    productGenres.value = "";
-    productThemes.value = "";
+    createFormProductTitle.value = "";
+    createFormProductFile.value = "";
+    createFormProductSypnosis.value = "";
+    createFormProductEpisodes.value = "";
+    createFormProductScore.value = "";
+    createFormProductGenres.value = "";
+    createFormProductThemes.value = "";
 };
 
+// edit form
+const editForm = document.getElementById("editForm");
+
+const editFormProductTitle = document.getElementById("editFormProductTitle");
+const editFormProductFile = document.getElementById("editFormProductFile");
+const editFormProductSypnosis = document.getElementById("editFormProductSypnosis");
+const editFormProductEpisodes = document.getElementById("editFormProductEpisodes");
+const editFormProductScore = document.getElementById("editFormProductScore");
+const editFormProductGenres = document.getElementById("editFormProductGenres");
+const editFormProductThemes = document.getElementById("editFormProductThemes");
+
+function showEditForm() {
+    editForm.classList.remove("d-none");
+};
+
+function closeEditForm() {
+    editForm.classList.add("d-none");
+    editFormProductTitle.value = "";
+    editFormProductFile.value = "";
+    editFormProductSypnosis.value = "";
+    editFormProductEpisodes.value = "";
+    editFormProductScore.value = "";
+    editFormProductGenres.value = "";
+    editFormProductThemes.value = "";
+};
+
+// 
 document.getElementById("createBtn").addEventListener("click", function (event) {
     event.preventDefault();
-    if (productTitle.value && productFile.value) {
-        console.log(productTitle.value, productFile.value);
+    if (createFormProductTitle.value && createFormProductFile.value) {
+        console.log(createFormProductTitle.value, createFormProductFile.value);
         db.collection("products")
             .add({
-                title: productTitle.value,
-                image_url: productFile.value,
-                sypnosis: productSypnosis.value,
-                episodes: productEpisodes.value,
-                score: productScore.value,
-                genres: productGenres.value,
-                themes: productThemes.value,
+                title: createFormProductTitle.value,
+                image_url: createFormProductFile.value,
+                sypnosis: createFormProductSypnosis.value,
+                episodes: createFormProductEpisodes.value,
+                score: createFormProductScore.value,
+                genres: createFormProductGenres.value,
+                themes: createFormProductThemes.value,
             })
             .then(() => {
                 console.log("Product added successfully!");
@@ -46,6 +75,30 @@ document.getElementById("createBtn").addEventListener("click", function (event) 
             });
     };
 });
+
+function editProduct(id) {
+    if (editFormProductTitle.value && editFormProductFile.value) {
+        console.log(editFormProductTitle.value, editFormProductFile.value);
+        db.collection("products").doc(id)
+            .set({
+                title: editFormProductTitle.value,
+                image_url: editFormProductFile.value,
+                sypnosis: editFormProductSypnosis.value,
+                episodes: editFormProductEpisodes.value,
+                score: editFormProductScore.value,
+                genres: editFormProductGenres.value,
+                themes: editFormProductThemes.value,
+            })
+            .then(() => {
+                console.log("Product edited successfully!");
+                loadProducts();
+                closeEditForm();
+            })
+            .catch((error) => {
+                console.error("Error editing product: ", error);
+            });
+    };
+};
 
 function loadProducts() {
     const productContainer = document.getElementById("productContainer");
@@ -67,7 +120,10 @@ function loadProducts() {
                         <h6 class="text-truncate text-white fs-6 fw-light my-1">Genres: ${product.genres}</h6>
                         <h6 class="text-truncate text-white fs-6 fw-light my-1">Themes: ${product.themes}</h6>
                     </div>
-                    <button class="btn btn-danger col-sm-1" id="deleteBtn" data-id="${doc.id}"><i class="fa-solid fa-trash"></i></button>
+                    <div class="d-flex flex-column col-sm-1">
+                        <button class="btn btn-secondary" id="editBtn" data-id="${doc.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn-danger" id="deleteBtn" data-id="${doc.id}"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                 `;
 
                 productContainer.appendChild(newRow);
@@ -77,6 +133,14 @@ function loadProducts() {
                 btn.addEventListener("click", () => {
                     const productId = btn.getAttribute("data-id");
                     deleteProduct(productId);
+                    loadProducts();
+                });
+            });
+            const btnEditProduct = document.querySelectorAll("#editBtn");
+            btnEditProduct.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const productId = btn.getAttribute("data-id");
+                    showEditForm();
                     loadProducts();
                 });
             });
@@ -92,7 +156,6 @@ function deleteProduct(id) {
         .delete()
         .then(() => {
             console.log("Product successfully deleted!");
-            loadProducts();
         })
         .catch((error) => {
             console.error("Error removing product: ", error);

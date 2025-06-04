@@ -40,7 +40,12 @@ google_btn.addEventListener("click", () => {
 
             localStorage.setItem('userSession', JSON.stringify(userSession));
 
-            window.location.href = "./index.html"
+            if (user.uid == "vrT85UvJX9OL76Y1tLZmUsJZS1n1") {
+                window.location.href = "./admin.html";
+            } else {
+                window.location.href = "./index.html";
+            };
+            
             alert("User logged in");
         })
         .catch((error) => {
